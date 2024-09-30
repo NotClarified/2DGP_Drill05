@@ -72,7 +72,7 @@ while running:
         x += dir_x * 5
     if (y + dir_y * 5 - 74 // 2) >= 0 and (y + dir_y * 5 + 74 // 2) <= 600:  # y축 경계선 체크
         y += dir_y * 5
-    delay(0.01)
+    delay(0.05)
 
 close_canvas()
 
