@@ -47,8 +47,8 @@ y = 600 // 2 # 캔버스 중앙
 frame = 0
 dir_x = 0 # x값
 dir_y = 0 # y값
-animation_num = 0 #답답해서 그냥 하나하나 픽셀로 지정하려고 합니다
-# fill here
+
+# 캐릭터 그림판에서 픽셀, 높이 하나하나 쟀습니다...
 while running:
     clear_canvas()
     background.draw(400, 90)
@@ -62,15 +62,17 @@ while running:
         pass
     elif dir_y != 0:
         # 상하 움직이기
-        character.clip_draw(110+ frame * 88, 473- 244, 86, 60, x, y) #시작 110, 243, 88*58
+        character.clip_draw(110+ frame * 88, 473- 244, 76, 60, x, y) #시작 110, 243, 76*60
         pass
 
     update_canvas()
     handle_events()
     frame = (frame + 1) % 7
-    x += dir_x * 5
-    y += dir_y * 5
-    delay(0.1)
+    if (x + dir_x * 5 - 86 // 2 ) >= 0 and (x + dir_x * 5 + 86 // 2) <= 800:  # x축 경계선 체크
+        x += dir_x * 5
+    if (y + dir_y * 5 - 74 // 2) >= 0 and (y + dir_y * 5 + 74 // 2) <= 600:  # y축 경계선 체크
+        y += dir_y * 5
+    delay(0.01)
 
 close_canvas()
 
