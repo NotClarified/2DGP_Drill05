@@ -47,26 +47,30 @@ y = 600 // 2 # 캔버스 중앙
 frame = 0
 dir_x = 0 # x값
 dir_y = 0 # y값
+animation_num = 0 #답답해서 그냥 하나하나 픽셀로 지정하려고 합니다
 # fill here
 while running:
     clear_canvas()
     background.draw(400, 90)
     if dir_x == 0 and dir_y == 0:
-        # IDLE 상태
+        # IDLE 상태 attack으로 진행
+        character.clip_draw(110 + frame * 77, 473 - 324, 82, 74, x, y)  # 시작 110 74, 82 *66
         pass
     elif dir_x != 0:
-        # 오른쪽 움직이기
+        # 좌우 움직이기
+        character.clip_draw(110 + frame * 77, 473- 133, 77, 64, x, y) # 시작 110 133, 77*64
         pass
     elif dir_y != 0:
-        # 왼쪽 움직이기
+        # 상하 움직이기
+        character.clip_draw(110+ frame * 88, 473- 244, 86, 60, x, y) #시작 110, 243, 88*58
         pass
 
     update_canvas()
     handle_events()
-    frame = (frame + 1) % 8
+    frame = (frame + 1) % 7
     x += dir_x * 5
     y += dir_y * 5
-    delay(0.5)
+    delay(0.1)
 
 close_canvas()
 
